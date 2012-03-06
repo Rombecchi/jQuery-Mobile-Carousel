@@ -46,6 +46,11 @@
 
                 currentPage = 1;
                 var start, stop;
+
+                list.data("settings", settings);
+                list.data("width", width);
+                list.data("list", list);
+                list.data("height", height);
                 if (settings.direction.toLowerCase() === "horizontal") {
                     list.css({ float: "left" });
                     $.each(pages, function (i) {
@@ -106,9 +111,6 @@
                             }
 
                             settings.afterStop.apply(list, arguments);
-                            $(this).data("settings", settings);
-                            $(this).data("width", width);
-                            $(this).data("list", list);
                         }
                     });
                 } else if (settings.direction.toLowerCase() === "vertical") {
@@ -170,9 +172,6 @@
                             }
 
                             settings.afterStop.apply(list, arguments);
-                            $(this).data("settings", settings);
-                            $(this).data("height", height);
-                            $(this).data("list", list);
                         }
                     });
                 }
@@ -182,11 +181,11 @@
                 originalList.replaceWith(container);
             });
         },
-        advance: function () {
+        next: function () {
             var settings = $(this).data("settings");
-            console.log(settings);
             var width = $(this).data("width");
             var list = $(this).data("list");
+            var height = $(this).data("height");
 
             if (settings.direction.toLowerCase() === "horizontal") {
                 var new_width = -1 * width * currentPage;
@@ -197,6 +196,23 @@
                 var new_width = -1 * height * currentPage;
                 list.animate({ top: new_width }, settings.duration);
                 currentPage++;
+            }
+        },
+        previous: function () {
+            var settings = $(this).data("settings");
+            var width = $(this).data("width");
+            var list = $(this).data("list");
+            var height = $(this).data("height");
+
+            if (settings.direction.toLowerCase() === "horizontal") {
+                var new_width = -1 * width * (currentPage - 1);
+                list.animate({ left: -1 * width * (currentPage - 2) }, settings.duration);
+                currentPage--;
+            }
+            else if (settings.direction.toLowerCase() === "vertical") {
+                 var new_width = -1 * height * (currentPage - 2);
+                 list.animate({ top: new_width }, settings.duration);
+                 currentPage--;
             }
         }
     };
