@@ -9,9 +9,11 @@
 * Licensed under the MIT
 */
 
+/*!
+*Modified by John C Ackerman for Next/Previous functionality
+*Fish & Richardson (jxa@fr.com)
+*/
 (function ($) {
-    var currentPage;
-
     var methods = {
         init: function (options) {
             var settings = {
@@ -44,13 +46,14 @@
                 var list = $("<ul>").css(listCss);
                 list[0].id = originalId;
 
-                currentPage = 1;
+                var currentPage = 1;
                 var start, stop;
 
                 list.data("settings", settings);
                 list.data("width", width);
                 list.data("list", list);
                 list.data("height", height);
+                list.data("currentPage", currentPage);
                 if (settings.direction.toLowerCase() === "horizontal") {
                     list.css({ float: "left" });
                     $.each(pages, function (i) {
@@ -63,6 +66,7 @@
                     list.draggable({
                         axis: "x",
                         start: function (event) {
+                            currentPage = list.data("currentPage");
                             settings.beforeStart.apply(list, arguments);
 
                             var data = event.originalEvent.touches ? event.originalEvent.touches[0] : event;
@@ -111,6 +115,7 @@
                             }
 
                             settings.afterStop.apply(list, arguments);
+                            list.data("currentPage", currentPage);
                         }
                     });
                 } else if (settings.direction.toLowerCase() === "vertical") {
@@ -124,6 +129,7 @@
                     list.draggable({
                         axis: "y",
                         start: function (event) {
+                            currentPage = list.data("currentPage");
                             settings.beforeStart.apply(list, arguments);
 
                             var data = event.originalEvent.touches ? event.originalEvent.touches[0] : event;
@@ -172,6 +178,7 @@
                             }
 
                             settings.afterStop.apply(list, arguments);
+                            list.data("currentPage", currentPage);
                         }
                     });
                 }
@@ -186,6 +193,7 @@
             var width = $(this).data("width");
             var list = $(this).data("list");
             var height = $(this).data("height");
+            var currentPage = $(this).data("currentPage");
 
             if (settings.direction.toLowerCase() === "horizontal") {
                 var new_width = -1 * width * currentPage;
@@ -197,12 +205,15 @@
                 list.animate({ top: new_width }, settings.duration);
                 currentPage++;
             }
+
+            $(this).data("currentPage", currentPage);
         },
         previous: function () {
             var settings = $(this).data("settings");
             var width = $(this).data("width");
             var list = $(this).data("list");
             var height = $(this).data("height");
+            var currentPage = $(this).data("currentPage");
 
             if (settings.direction.toLowerCase() === "horizontal") {
                 var new_width = -1 * width * (currentPage - 1);
@@ -210,10 +221,12 @@
                 currentPage--;
             }
             else if (settings.direction.toLowerCase() === "vertical") {
-                 var new_width = -1 * height * (currentPage - 2);
-                 list.animate({ top: new_width }, settings.duration);
-                 currentPage--;
+                var new_width = -1 * height * (currentPage - 2);
+                list.animate({ top: new_width }, settings.duration);
+                currentPage--;
             }
+
+            $(this).data("currentPage", currentPage);
         }
     };
 
