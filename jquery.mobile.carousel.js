@@ -9,10 +9,6 @@
 * Licensed under the MIT
 */
 
-/*!
-*Modified by John C Ackerman for Next/Previous functionality
-*Fish & Richardson (jxa@fr.com)
-*/
 (function ($) {
     var methods = {
         init: function (options) {
