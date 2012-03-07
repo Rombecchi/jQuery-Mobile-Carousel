@@ -62,10 +62,10 @@
                             .css($.extend(listItemCss, { float: "left" }))
                             .html($(this).html());
                         list.append(li);
-						dotlist = dotlist + '<span>' + dotoff + '</span>';
+			dotlist = dotlist + '<span>' + dotoff + '</span>';
                     });
-					navigator.html(dotlist);
-					navigator.find('span').first().html(doton);
+			navigator.html(dotlist);
+			navigator.find('span').first().html(doton);
 
                     list.draggable({
                         axis: "x",
@@ -97,8 +97,8 @@
                                 }
                                 var new_width = -1 * width * currentPage;
                                 list.animate({ left: new_width }, settings.duration);
-								navigator.find('span').siblings().html(dotoff);
-								navigator.find('span').eq(currentPage).html(doton);
+				navigator.find('span').siblings().html(dotoff);
+				navigator.find('span').eq(currentPage).html(doton);
                                 currentPage++;
                             }
 
@@ -110,8 +110,8 @@
                                 var new_width = -1 * width * (currentPage - 1);
                                 list.animate({ left: -1 * width * (currentPage - 2) }, settings.duration);
                                 currentPage--;
-								navigator.find('span').siblings().html(dotoff);
-								navigator.find('span').eq(currentPage-1).html(doton);
+				navigator.find('span').siblings().html(dotoff);
+				navigator.find('span').eq(currentPage-1).html(doton);
                             }
 
                             function dragDelta() {
@@ -133,10 +133,10 @@
                             .html($(this).html());
                         list.append(li);
                     });
-					navigator.addClass('vertical');
-					arrows.addClass('verticalarr');
-					navigator.html(dotlist);
-					navigator.find('span').first().html(doton);
+			navigator.addClass('vertical');
+			arrows.addClass('verticalarr');
+			navigator.html(dotlist);
+			navigator.find('span').first().html(doton);
 
                     list.draggable({
                         axis: "y",
@@ -168,8 +168,8 @@
                                 }
                                 var new_width = -1 * height * currentPage;
                                 list.animate({ top: new_width }, settings.duration);
-								navigator.find('span').siblings().html(dotoff);
-								navigator.find('span').eq(currentPage).html(doton);
+				navigator.find('span').siblings().html(dotoff);
+				navigator.find('span').eq(currentPage).html(doton);
                                 currentPage++;
                             }
 
@@ -181,8 +181,8 @@
                                 var new_width = -1 * height * (currentPage - 2);
                                 list.animate({ top: new_width }, settings.duration);
                                 currentPage--;
-								navigator.find('span').siblings().html(dotoff);
-								navigator.find('span').eq(currentPage-1).html(doton);
+				navigator.find('span').siblings().html(dotoff);
+				navigator.find('span').eq(currentPage-1).html(doton);
                             }
 
                             function dragDelta() {
