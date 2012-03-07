@@ -33,8 +33,8 @@ var dotlist = "";
                 var pages = originalList.children();
                 var width = originalList.parent().width();
                 var height = originalList.parent().height();
-	var navigator = $('#navigator');
-	var arrows = $('#arrows');
+                var navigator = $('#navigator');
+                var arrows = $('#arrows');
 
                 //Css
                 var containerCss = { position: "relative", overflow: "hidden", width: width, height: height };
@@ -60,10 +60,10 @@ var dotlist = "";
                             .css($.extend(listItemCss, { float: "left" }))
                             .html($(this).html());
                         list.append(li);
-						dotlist = dotlist + '<span></span>';
+			dotlist = dotlist + '<span></span>';
                     });
-		navigator.html(dotlist);
-		navigator.find('span').first().addClass('on');
+                    navigator.html(dotlist);
+                    navigator.find('span').first().addClass('on');
 
                     list.draggable({
                         axis: "x",
@@ -95,8 +95,9 @@ var dotlist = "";
                                 }
                                 var new_width = -1 * width * currentPage;
                                 list.animate({ left: new_width }, settings.duration);
-navigator.find('span').siblings().removeClass('on');
-			navigator.find('span').eq(currentPage).addClass('on');
+                                
+                                navigator.find('span').siblings().removeClass('on');
+                                navigator.find('span').eq(currentPage).addClass('on');
                                 currentPage++;
                             }
 
@@ -108,8 +109,8 @@ navigator.find('span').siblings().removeClass('on');
                                 var new_width = -1 * width * (currentPage - 1);
                                 list.animate({ left: -1 * width * (currentPage - 2) }, settings.duration);
                                 currentPage--;
-			navigator.find('span').siblings().removeClass('on');
-			navigator.find('span').eq(currentPage-1).addClass('on');
+                                navigator.find('span').siblings().removeClass('on');
+                                navigator.find('span').eq(currentPage-1).addClass('on');
                             }
 
                             function dragDelta() {
@@ -132,10 +133,10 @@ navigator.find('span').siblings().removeClass('on');
                         list.append(li);
                         dotlist = dotlist + '<span></span>';
                     });
-		navigator.addClass('vertical');
-		arrows.addClass('verticalarr');
-		navigator.html(dotlist);
-		navigator.find('span').first().addClass('on');
+                    navigator.addClass('vertical');
+                    arrows.addClass('verticalarr');
+                    navigator.html(dotlist);
+                    navigator.find('span').first().addClass('on');
 
                     list.draggable({
                         axis: "y",
@@ -167,8 +168,8 @@ navigator.find('span').siblings().removeClass('on');
                                 }
                                 var new_width = -1 * height * currentPage;
                                 list.animate({ top: new_width }, settings.duration);
-								navigator.find('span').siblings().removeClass('on');
-								navigator.find('span').eq(currentPage).addClass('on');
+				navigator.find('span').siblings().removeClass('on');
+				navigator.find('span').eq(currentPage).addClass('on');
                                 currentPage++;
                             }
 
@@ -181,7 +182,7 @@ navigator.find('span').siblings().removeClass('on');
                                 list.animate({ top: new_width }, settings.duration);
                                 currentPage--;
                                 navigator.find('span').siblings().removeClass('on');
-								navigator.find('span').eq(currentPage-1).addClass('on');
+				navigator.find('span').eq(currentPage-1).addClass('on');
                             }
 
                             function dragDelta() {
@@ -211,11 +212,10 @@ navigator.find('span').siblings().removeClass('on');
             var list = $(this).data("list");
             var height = $(this).data("height");
             var currentPage = $(this).data("currentPage");
-            var navigator = $('#navigator');            			
-			
-	if (currentPage === pages.length) {return;}
-	navigator.find('span').siblings().removeClass('on');
-	navigator.find('span').eq(currentPage).addClass('on');
+            var navigator = $('#navigator');
+            if (currentPage === pages.length) {return;}
+            navigator.find('span').siblings().removeClass('on');
+            navigator.find('span').eq(currentPage).addClass('on');
             if (settings.direction.toLowerCase() === "horizontal") {
                 var new_width = -1 * width * currentPage;
                 list.animate({ left: new_width }, settings.duration);
@@ -249,8 +249,8 @@ navigator.find('span').siblings().removeClass('on');
                 list.animate({ top: new_width }, settings.duration);
                 currentPage--;
             }
-	navigator.find('span').siblings().removeClass('on');
-	navigator.find('span').eq(currentPage-1).addClass('on');
+            navigator.find('span').siblings().removeClass('on');
+            navigator.find('span').eq(currentPage-1).addClass('on');
 
             $(this).data("currentPage", currentPage);
         }
