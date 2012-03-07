@@ -6,10 +6,9 @@
 *
 * Project Home: 
 * http://code.google.com/p/jquery-ui-for-ipad-and-iphone/
-* revisioned by Anonymous
 */
 
-
+function starttouch() {
 $(function() {
 	//
 	// Extend jQuery feature detection
@@ -21,6 +20,14 @@ $(function() {
 	//
 	// Hook up touch events
 	//
+	/*
+	if ($.support.touch) {
+		document.addEventListener("touchstart", iPadTouchHandler, false);
+		document.addEventListener("touchmove", iPadTouchHandler, false);
+		document.addEventListener("touchend", iPadTouchHandler, false);
+		document.addEventListener("touchcancel", iPadTouchHandler, false);
+	}
+	*/
 	if ($.support.touch) {
 		var obj = document.getElementsByClassName('target_area_divs');
 		for(i=0; i<obj.length;i++){
@@ -225,3 +232,4 @@ function iPadTouchHandler(event) {
 }
 
 
+}
