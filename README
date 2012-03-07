@@ -1,9 +1,60 @@
-You must use the jquery.ui.ipad.js plugin in order for jQuery UI widgets to recognize mobile touch events as click events.
+---------- ITALIANO ----------
+In questa versione "jquery.ui.ipad_func.js" è stato cambiato in una funzione "starttouch()" al fine di richiamarla solo quando si scatena l'evento "pageshow" nelle JQuery mobile che usano AJAX. Tuttavia la funzione può essere richiamata in qualsiasi momento.
 
-Demo: http://jsfiddle.net/blackdynamo/yxhzU/
+In questa versione sono utilizzate le funzioni di ExtremeTrek per la gestione di pulsanti esterni al fine di comandare il carousel. Inoltre viene introdotto sia un "Navigator" che visualizza dei pallini che segnano la pagina attualmente visualizzata e delle "Arrow" che gestiscono proprio il movimento delle slide.
+Ovviamente quando si usa il carousel in verticale sia il Navigator che le Arrow si sistemano graficamente in modo automatico (via CSS)
+
+Demo: coming soon
+
+
+Metodi:
+-------
+  init: viene lanciato al momento dell'inizializzazione del plugin (anche se non specificato)
+  next: viene visualizzata la pagina successiva
+  previous: viene visualizzata la pagina precedente
+
+Esempi:   $('#carousel').carousel();
+          $('#carousel').carousel('next');
+
+
+Opzioni disponibili:
+--------------------  
+  duration: durata in millisecondi della transizione.
+  direction: specificare se "horizontal" o "vertical".
+  minimumDrag: distanza minima in pixel di trascinamento affinchè sia lanciato l'evento del cambio pagina.
+  beforeStart: callback che viene eseguita appena inizia il drag. "this" = jQuery(list)
+  afterStart: callback che viene lanciata subito dopo che sia iniziato l'evento di start. "this" = the jQuery(list)
+  beforeStop: callback che viene lanciata appena il drag finisce. "this" = the jQuery(list)
+  beforeStart: callback che viene lanciata subito dopo che il drag è finito. "this" = the jQuery(list)
+
+Esempi:   $("#carousel").carousel({direction: "horizontal"});
+          $("#carousel").carousel({direction: "vertical", minimumDrag: 30});
+
+
+
+
+---------- ENGLISH ----------
+You must use the jquery.ui.ipad.js plugin in order for jQuery UI widgets to recognize mobile touch events as click events. Instead, if you have to launch after the page has loaded via AJAX in JQueryMobile, you have to use "jquery.ui.ipad_func.js" that include the startup of touch enhancement calling the "starttouch()" function.
+
+This version also include support for a Navigator, that shows dots for each page present in the carousel, and the Arrows that are used to move around the slides without using the drag method.
+Also the "vertical" param adjust via CSS the position of Navigator and Arrows
+
+
+Demo: coming soon
+
+
+Methods:
+-------
+  init: initialize the plugin (also if blank is leaved when call the function)
+  next: this will show the next page
+  previous: this will show the previous page
+
+Examples:   $('#carousel').carousel();
+            $('#carousel').carousel('next');
+
 
 Available options:
-
+--------------------  
 duration: this is the number of milliseconds for the slide transition to happen.
 direction: whether the carousel is a "horizontal" or "vertical" carousel.
 minimumDrag: this is the minimum distance the carousel has to be dragged in order to trigger the page change.
