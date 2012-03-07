@@ -4,7 +4,7 @@ In questa versione "jquery.ui.ipad_func.js" è stato cambiato in una funzione "s
 In questa versione sono utilizzate le funzioni di ExtremeTrek per la gestione di pulsanti esterni al fine di comandare il carousel. Inoltre viene introdotto sia un "Navigator" che visualizza dei pallini che segnano la pagina attualmente visualizzata e delle "Arrow" che gestiscono proprio il movimento delle slide.
 Ovviamente quando si usa il carousel in verticale sia il Navigator che le Arrow si sistemano graficamente in modo automatico (via CSS)
 
-Demo: coming soon
+Demo: http://jsfiddle.net/rombecchi/HxkAT/5/
 
 
 Metodi:
@@ -40,7 +40,7 @@ This version also include support for a Navigator, that shows dots for each page
 Also the "vertical" param adjust via CSS the position of Navigator and Arrows
 
 
-Demo: coming soon
+Demo: http://jsfiddle.net/rombecchi/HxkAT/5/
 
 
 Methods:
