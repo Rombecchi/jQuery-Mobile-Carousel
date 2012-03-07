@@ -10,9 +10,7 @@
 */
 
 (function ($) {
-    var doton = '<img src="images/bullet_on.png">';
-	var dotoff = '<img src="images/bullet_off.png">';
-	var dotlist = "";
+    var dotlist = "";
     var methods = {
         init: function (options) {
             var settings = {
@@ -35,8 +33,8 @@
                 var pages = originalList.children();
                 var width = originalList.parent().width();
                 var height = originalList.parent().height();
-				var navigator = $('#navigator');
-				var arrows = $('#arrows');
+		var navigator = $('#navigator');
+		var arrows = $('#arrows');
 
                 //Css
                 var containerCss = { position: "relative", overflow: "hidden", width: width, height: height };
@@ -62,10 +60,10 @@
                             .css($.extend(listItemCss, { float: "left" }))
                             .html($(this).html());
                         list.append(li);
-			dotlist = dotlist + '<span>' + dotoff + '</span>';
+						dotlist = dotlist + '<span></span>';
                     });
-			navigator.html(dotlist);
-			navigator.find('span').first().html(doton);
+                    navigator.html(dotlist);
+                    navigator.find('span').first().addClass('on');
 
                     list.draggable({
                         axis: "x",
@@ -97,8 +95,8 @@
                                 }
                                 var new_width = -1 * width * currentPage;
                                 list.animate({ left: new_width }, settings.duration);
-				navigator.find('span').siblings().html(dotoff);
-				navigator.find('span').eq(currentPage).html(doton);
+				navigator.find('span').siblings().removeClass('on');
+				navigator.find('span').eq(currentPage).addClass('on');
                                 currentPage++;
                             }
 
@@ -110,8 +108,8 @@
                                 var new_width = -1 * width * (currentPage - 1);
                                 list.animate({ left: -1 * width * (currentPage - 2) }, settings.duration);
                                 currentPage--;
-				navigator.find('span').siblings().html(dotoff);
-				navigator.find('span').eq(currentPage-1).html(doton);
+				navigator.find('span').siblings().removeClass('on');
+				navigator.find('span').eq(currentPage-1).addClass('on');
                             }
 
                             function dragDelta() {
@@ -133,10 +131,10 @@
                             .html($(this).html());
                         list.append(li);
                     });
-			navigator.addClass('vertical');
-			arrows.addClass('verticalarr');
-			navigator.html(dotlist);
-			navigator.find('span').first().html(doton);
+                    navigator.addClass('vertical');
+                    arrows.addClass('verticalarr');
+                    navigator.html(dotlist);
+                    navigator.find('span').first().html(doton);//////////////////////////////
 
                     list.draggable({
                         axis: "y",
@@ -168,8 +166,8 @@
                                 }
                                 var new_width = -1 * height * currentPage;
                                 list.animate({ top: new_width }, settings.duration);
-				navigator.find('span').siblings().html(dotoff);
-				navigator.find('span').eq(currentPage).html(doton);
+				navigator.find('span').siblings().removeClass('on');
+				navigator.find('span').eq(currentPage).addClass('on');
                                 currentPage++;
                             }
 
@@ -181,8 +179,8 @@
                                 var new_width = -1 * height * (currentPage - 2);
                                 list.animate({ top: new_width }, settings.duration);
                                 currentPage--;
-				navigator.find('span').siblings().html(dotoff);
-				navigator.find('span').eq(currentPage-1).html(doton);
+                                navigator.find('span').siblings().removeClass('on');
+				navigator.find('span').eq(currentPage-1).addClass('on');
                             }
 
                             function dragDelta() {
@@ -212,11 +210,10 @@
             var list = $(this).data("list");
             var height = $(this).data("height");
             var currentPage = $(this).data("currentPage");
-            var navigator = $('#navigator');            			
-			
-			if (currentPage === pages.length) {return;}
-			navigator.find('span').siblings().html(dotoff);
-			navigator.find('span').eq(currentPage).html(doton);
+            var navigator = $('#navigator');
+            if (currentPage === pages.length) {return;}
+            navigator.find('span').siblings().removeClass('on');
+            navigator.find('span').eq(currentPage).addClass('on');
             if (settings.direction.toLowerCase() === "horizontal") {
                 var new_width = -1 * width * currentPage;
                 list.animate({ left: new_width }, settings.duration);
@@ -250,8 +247,9 @@
                 list.animate({ top: new_width }, settings.duration);
                 currentPage--;
             }
-			navigator.find('span').siblings().html(dotoff);
-			navigator.find('span').eq(currentPage-1).html(doton);	
+            navigator.find('span').siblings().removeClass('on');
+            navigator.find('span').eq(currentPage-1).addClass('on');
+
             $(this).data("currentPage", currentPage);
         }
     };
