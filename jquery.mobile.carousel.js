@@ -10,7 +10,6 @@
 */
 
 (function ($) {
-var dotlist = "";
     var methods = {
         init: function (options) {
             var settings = {
@@ -35,6 +34,7 @@ var dotlist = "";
                 var height = originalList.parent().height();
                 var navigator = $('#navigator');
                 var arrows = $('#arrows');
+                var dotlist = "";
 
                 //Css
                 var containerCss = { position: "relative", overflow: "hidden", width: width, height: height };
